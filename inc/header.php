@@ -114,7 +114,7 @@ include_once __DIR__ . '/site_settings.php';
                                     <i class="icofont-rounded-down dropdown-arrow"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="events.php">Semua Acara</a></li>
+                                    <li><a href="index.php?page=events">Semua Acara</a></li>
                                     <li><a href="events-single.php">Detail Acara</a></li>
                                 </ul>
                             </li>
@@ -131,7 +131,7 @@ include_once __DIR__ . '/site_settings.php';
                                     <i class="icofont-rounded-down dropdown-arrow"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="gallery.php">Galeri</a></li>
+                                    <li><a href="index.php?page=galeri">Galeri</a></li>
                                     <li><a href="index.php?page=anggota">Anggota</a></li>
                                     <li><a href="blog.php">Blog</a></li>
                                     <li><a href="sermons.php">Ceramah</a></li>

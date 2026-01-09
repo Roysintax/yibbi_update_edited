@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri - Yayasan Y-IBBI</title>
+    <link rel="stylesheet" href="galeri.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Galeri Section -->
+    <section class="galeri-section">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <span class="section-badge">
+                    <i class="fas fa-images"></i>
+                    Dokumentasi
+                </span>
+                <h1>Galeri Kegiatan</h1>
+                <p>Kumpulan momen berharga dari berbagai kegiatan dan program yayasan yang telah kami laksanakan
+                    bersama masyarakat.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-container">
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="all">Semua</button>
+                    <button class="filter-tab" data-filter="pendidikan">Pendidikan</button>
+                    <button class="filter-tab" data-filter="sosial">Sosial</button>
+                    <button class="filter-tab" data-filter="keagamaan">Keagamaan</button>
+                    <button class="filter-tab" data-filter="kesehatan">Kesehatan</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid">
+                <!-- Item 1 -->
+                <div class="gallery-item tall" data-category="pendidikan">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&h=800&fit=crop"
+                        alt="Kegiatan Pendidikan">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Pendidikan</span>
+                            <h3 class="gallery-title">Pelatihan Guru TPQ</h3>
+                            <span class="gallery-date">15 Desember 2024</span>
+                        </div>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="gallery-item medium" data-category="sosial">
+                    <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600&h=500&fit=crop"
+                        alt="Kegiatan Sosial">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Sosial</span>
+                            <h3 class="gallery-title">Pembagian Sembako</h3>
+                            <span class="gallery-date">10 Desember 2024</span>
+                        </div>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="gallery-item short" data-category="keagamaan">
+                    <img src="https://images.unsplash.com/photo-1564769625392-651b89c75a10?w=600&h=400&fit=crop"
+                        alt="Kegiatan Keagamaan">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Keagamaan</span>
+                            <h3 class="gallery-title">Kajian Rutin Mingguan</h3>
+                            <span class="gallery-date">8 Desember 2024</span>
+                        </div>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="gallery-item medium" data-category="kesehatan">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=500&fit=crop"
+                        alt="Kegiatan Kesehatan">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Kesehatan</span>
+                            <h3 class="gallery-title">Pengobatan Gratis</h3>
+                            <span class="gallery-date">5 Desember 2024</span>
+                        </div>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="gallery-item short" data-category="pendidikan">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop"
+                        alt="Beasiswa Pendidikan">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Pendidikan</span>
+                            <h3 class="gallery-title">Penyerahan Beasiswa</h3>
+                            <span class="gallery-date">1 Desember 2024</span>
+                        </div>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="gallery-item tall" data-category="sosial">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&h=800&fit=crop"
+                        alt="Bantuan Sosial">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Sosial</span>
+                            <h3 class="gallery-title">Santunan Yatim Piatu</h3>
+                            <span class="gallery-date">28 November 2024</span>
+                        </div>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Item 7 -->
+                <div class="gallery-item medium" data-category="keagamaan">
+                    <img src="https://images.unsplash.com/photo-1590076215667-875d4ef2d7de?w=600&h=500&fit=crop"
+                        alt="Kegiatan Ramadhan">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Keagamaan</span>
+                            <h3 class="gallery-title">Buka Puasa Bersama</h3>
+                            <span class="gallery-date">25 November 2024</span>
+                        </div>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Item 8 -->
+                <div class="gallery-item short" data-category="kesehatan">
+                    <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&h=400&fit=crop"
+                        alt="Donor Darah">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Kesehatan</span>
+                            <h3 class="gallery-title">Aksi Donor Darah</h3>
+                            <span class="gallery-date">20 November 2024</span>
+                        </div>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Item 9 -->
+                <div class="gallery-item medium" data-category="pendidikan">
+                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&h=500&fit=crop"
+                        alt="Wisuda Santri">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Pendidikan</span>
+                            <h3 class="gallery-title">Wisuda Tahfidz Quran</h3>
+                            <span class="gallery-date">15 November 2024</span>
+                        </div>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Item 10 -->
+                <div class="gallery-item tall" data-category="sosial">
+                    <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&h=800&fit=crop"
+                        alt="Kegiatan Relawan">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Sosial</span>
+                            <h3 class="gallery-title">Aksi Peduli Bencana</h3>
+                            <span class="gallery-date">10 November 2024</span>
+                        </div>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Item 11 -->
+                <div class="gallery-item short" data-category="keagamaan">
+                    <img src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?w=600&h=400&fit=crop"
+                        alt="Tabligh Akbar">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Keagamaan</span>
+                            <h3 class="gallery-title">Tabligh Akbar</h3>
+                            <span class="gallery-date">5 November 2024</span>
+                        </div>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+
+                <!-- Item 12 -->
+                <div class="gallery-item medium" data-category="kesehatan">
+                    <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&h=500&fit=crop"
+                        alt="Khitan Massal">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <span class="gallery-category">Kesehatan</span>
+                            <h3 class="gallery-title">Khitan Massal Gratis</h3>
+                            <span class="gallery-date">1 November 2024</span>
+                        </div>
+                    </div>
+                    <div class="gallery-zoom">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Stats -->
+            <div class="gallery-stats">
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Dokumentasi Foto</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Kegiatan Terdokumentasi</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Kategori Kegiatan</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2024</div>
+                    <div class="stat-label">Tahun Aktif</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img src="" alt="" id="lightboxImage">
+            <button class="lightbox-nav lightbox-next" id="lightboxNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="lightbox-caption">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxDate"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Filter functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                filterTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                const filter = tab.dataset.filter;
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxTitle = document.getElementById('lightboxTitle');
+        const lightboxDate = document.getElementById('lightboxDate');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+
+        let currentIndex = 0;
+        let visibleItems = [];
+
+        function updateVisibleItems() {
+            visibleItems = Array.from(galleryItems).filter(item =>
+                item.style.display !== 'none'
+            );
+        }
+
+        function openLightbox(index) {
+            updateVisibleItems();
+            currentIndex = index;
+            const item = visibleItems[currentIndex];
+            const img = item.querySelector('img');
+            const title = item.querySelector('.gallery-title').textContent;
+            const date = item.querySelector('.gallery-date').textContent;
+
+            lightboxImage.src = img.src;
+            lightboxTitle.textContent = title;
+            lightboxDate.textContent = date;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function navigateLightbox(direction) {
+            updateVisibleItems();
+            currentIndex += direction;
+            if (currentIndex >= visibleItems.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = visibleItems.length - 1;
+
+            const item = visibleItems[currentIndex];
+            const img = item.querySelector('img');
+            const title = item.querySelector('.gallery-title').textContent;
+            const date = item.querySelector('.gallery-date').textContent;
+
+            lightboxImage.style.opacity = '0';
+            setTimeout(() => {
+                lightboxImage.src = img.src;
+                lightboxTitle.textContent = title;
+                lightboxDate.textContent = date;
+                lightboxImage.style.opacity = '1';
+            }, 200);
+        }
+
+        // Event listeners
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                updateVisibleItems();
+                const visibleIndex = visibleItems.indexOf(item);
+                openLightbox(visibleIndex);
+            });
+        });
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+        lightboxNext.addEventListener('click', () => navigateLightbox(1));
+
+        // Close on backdrop click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        });
+    </script>
+</body>
+
+</html>
