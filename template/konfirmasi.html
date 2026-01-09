@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Pembayaran - Yayasan Y-ibbi</title>
+    <link rel="stylesheet" href="konfirmasi.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <section class="konfirmasi-section">
+        <div class="container">
+            <!-- Header -->
+            <div class="konfirmasi-header">
+                <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                <h1>Terima Kasih!</h1>
+                <p class="subtitle">Donasi Anda sedang dalam proses verifikasi</p>
+            </div>
+
+            <!-- Progress Timeline -->
+            <div class="timeline-wrapper">
+                <div class="timeline">
+                    <!-- Step 1: Pembayaran Selesai -->
+                    <div class="timeline-step completed">
+                        <div class="step-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="step-connector">
+                            <div class="connector-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <h3>Pembayaran Selesai</h3>
+                            <p>Bukti transfer telah diterima</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Tunggu Konfirmasi -->
+                    <div class="timeline-step active">
+                        <div class="step-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="step-connector">
+                            <div class="connector-line"></div>
+                        </div>
+                        <div class="step-content">
+                            <h3>Tunggu Konfirmasi Admin</h3>
+                            <p>Sedang dalam proses verifikasi</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Pembayaran Sukses -->
+                    <div class="timeline-step pending">
+                        <div class="step-icon">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <div class="step-content">
+                            <h3>Pembayaran Sukses</h3>
+                            <p>Donasi berhasil dikonfirmasi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info Card -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="info-content">
+                    <h4>Proses Verifikasi</h4>
+                    <p>
+                        Admin kami akan memverifikasi pembayaran Anda dalam waktu
+                        <strong>1x24 jam</strong> pada hari kerja. Anda akan menerima
+                        notifikasi melalui WhatsApp setelah pembayaran dikonfirmasi.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Transaction Details -->
+            <div class="transaction-card">
+                <h3 class="card-title">
+                    <i class="fas fa-receipt"></i>
+                    Detail Transaksi
+                </h3>
+                <div class="transaction-details">
+                    <div class="detail-row">
+                        <span class="label">ID Transaksi</span>
+                        <span class="value" id="transactionId">DON-2026010912345</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Tanggal</span>
+                        <span class="value" id="transactionDate">9 Januari 2026, 10:30 WIB</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Nama Donatur</span>
+                        <span class="value" id="donorName">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Nominal</span>
+                        <span class="value nominal" id="nominal">Rp 100.000</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Status</span>
+                        <span class="value status pending">
+                            <i class="fas fa-clock"></i>
+                            Menunggu Konfirmasi
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="donasi.html" class="btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Kembali ke Donasi</span>
+                </a>
+                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20mengecek%20status%20donasi%20dengan%20ID:%20DON-2026010912345"
+                    class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>Hubungi Admin</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Generate Transaction ID
+        function generateTransactionId() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const random = Math.floor(Math.random() * 90000) + 10000;
+            return `DON-${year}${month}${day}${random}`;
+        }
+
+        // Format current date
+        function formatDate() {
+            const now = new Date();
+            const options = {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            return now.toLocaleDateString('id-ID', options) + ' WIB';
+        }
+
+        // Set transaction details
+        document.getElementById('transactionId').textContent = generateTransactionId();
+        document.getElementById('transactionDate').textContent = formatDate();
+    </script>
+</body>
+
+</html>

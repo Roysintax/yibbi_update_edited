@@ -1,0 +1,749 @@
+/* ==========================================
+   DONASI PAGE - YAYASAN Y-IBBI
+   Soft & Professional Religious Foundation
+   ========================================== */
+
+/* CSS Variables - Soft Color Palette */
+:root {
+    /* Primary Colors - Soft Sage Green */
+    --primary-50: #f0f5f3;
+    --primary-100: #d8e8e2;
+    --primary-200: #b5d4c8;
+    --primary-300: #8dbba8;
+    --primary-400: #6a9f89;
+    --primary-500: #4d8570;
+    --primary-600: #3d6a5a;
+    --primary-700: #335649;
+    --primary-800: #2b463c;
+    --primary-900: #253a33;
+
+    /* Accent Colors - Warm Gold */
+    --accent-50: #fdfaf3;
+    --accent-100: #f9f1dc;
+    --accent-200: #f2e1b8;
+    --accent-300: #e9cb8a;
+    --accent-400: #ddb05a;
+    --accent-500: #d49a3a;
+    --accent-600: #c27f2c;
+    --accent-700: #a16326;
+    --accent-800: #834f26;
+    --accent-900: #6c4223;
+
+    /* Neutral Colors */
+    --neutral-50: #fafafa;
+    --neutral-100: #f5f5f5;
+    --neutral-200: #e5e5e5;
+    --neutral-300: #d4d4d4;
+    --neutral-400: #a3a3a3;
+    --neutral-500: #737373;
+    --neutral-600: #525252;
+    --neutral-700: #404040;
+    --neutral-800: #262626;
+    --neutral-900: #171717;
+
+    /* WhatsApp Color */
+    --whatsapp: #25D366;
+    --whatsapp-dark: #128C7E;
+
+    /* Background */
+    --bg-primary: #fdfcfb;
+    --bg-secondary: #f8f6f3;
+    --bg-card: #ffffff;
+
+    /* Shadows - Very Soft */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-base: 250ms ease;
+    --transition-slow: 400ms ease;
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--neutral-700);
+    line-height: 1.7;
+    background-color: var(--bg-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ==========================================
+   SECTION HEADER
+   ========================================== */
+.donasi-section {
+    padding: 60px 0 80px;
+    background: var(--bg-primary);
+    min-height: 100vh;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 50px;
+}
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary-50);
+    color: var(--primary-600);
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    border: 1px solid var(--primary-100);
+}
+
+.section-badge i {
+    font-size: 0.9rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--neutral-800);
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.title-divider {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-400), var(--accent-400));
+    border-radius: var(--radius-full);
+    margin: 20px auto 24px;
+}
+
+.section-desc {
+    color: var(--neutral-500);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* ==========================================
+   DONASI WRAPPER - TWO COLUMNS
+   ========================================== */
+.donasi-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Column Title */
+.column-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--neutral-800);
+    margin-bottom: 8px;
+}
+
+.column-title i {
+    color: var(--primary-500);
+}
+
+.column-desc {
+    color: var(--neutral-500);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+}
+
+/* ==========================================
+   BANK COLUMN (LEFT)
+   ========================================== */
+.bank-column {
+    background: var(--bg-card);
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--neutral-100);
+    box-shadow: var(--shadow-sm);
+}
+
+.bank-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    margin-bottom: 16px;
+    border: 1px solid var(--neutral-100);
+    transition: var(--transition-base);
+}
+
+.bank-card:hover {
+    border-color: var(--primary-200);
+    box-shadow: var(--shadow-sm);
+}
+
+.bank-logo {
+    width: 70px;
+    height: 50px;
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid var(--neutral-200);
+}
+
+.bank-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.bank-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.bank-name {
+    font-size: 0.85rem;
+    color: var(--neutral-500);
+    font-weight: 500;
+}
+
+.account-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--neutral-800);
+    margin: 2px 0 8px;
+}
+
+.account-number {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.account-number span {
+    font-family: 'SF Mono', 'Consolas', monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-600);
+    background: var(--primary-50);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 1px;
+}
+
+.copy-btn {
+    width: 36px;
+    height: 36px;
+    background: var(--primary-500);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-base);
+}
+
+.copy-btn:hover {
+    background: var(--primary-600);
+    transform: scale(1.05);
+}
+
+/* E-Wallet Section */
+.ewallet-section {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--neutral-200);
+}
+
+.ewallet-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--neutral-700);
+    margin-bottom: 12px;
+}
+
+.ewallet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ewallet-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--accent-50);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--accent-100);
+}
+
+.ewallet-item i {
+    color: var(--accent-600);
+}
+
+.ewallet-item span {
+    font-size: 0.9rem;
+    color: var(--neutral-700);
+    font-weight: 500;
+}
+
+/* ==========================================
+   FORM COLUMN (RIGHT)
+   ========================================== */
+.form-column {
+    background: var(--bg-card);
+    padding: 32px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--neutral-100);
+    box-shadow: var(--shadow-sm);
+}
+
+.donasi-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--neutral-700);
+}
+
+.form-group label i {
+    color: var(--primary-500);
+    font-size: 0.85rem;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 14px 16px;
+    border: 1.5px solid var(--neutral-200);
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--neutral-800);
+    background: var(--bg-primary);
+    transition: var(--transition-base);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-400);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(77, 133, 112, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--neutral-400);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Nominal Input */
+.nominal-input {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid var(--neutral-200);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--bg-primary);
+    transition: var(--transition-base);
+}
+
+.nominal-input:focus-within {
+    border-color: var(--primary-400);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(77, 133, 112, 0.1);
+}
+
+.nominal-input .currency {
+    padding: 14px 16px;
+    background: var(--neutral-100);
+    font-weight: 600;
+    color: var(--neutral-600);
+    border-right: 1px solid var(--neutral-200);
+}
+
+.nominal-input input {
+    border: none;
+    padding: 14px 16px;
+    flex-grow: 1;
+    background: transparent;
+}
+
+.nominal-input input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Quick Amount Buttons */
+.quick-amounts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 4px;
+}
+
+.quick-btn {
+    padding: 10px 16px;
+    background: var(--neutral-100);
+    border: 1.5px solid var(--neutral-200);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--neutral-600);
+    cursor: pointer;
+    transition: var(--transition-base);
+    font-family: inherit;
+}
+
+.quick-btn:hover {
+    background: var(--primary-50);
+    border-color: var(--primary-300);
+    color: var(--primary-600);
+}
+
+.quick-btn.active {
+    background: var(--primary-500);
+    border-color: var(--primary-500);
+    color: white;
+}
+
+/* Submit Button */
+.btn-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-base);
+    box-shadow: 0 4px 16px rgba(77, 133, 112, 0.3);
+    font-family: inherit;
+    margin-top: 8px;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(77, 133, 112, 0.4);
+}
+
+/* ==========================================
+   WHATSAPP SECTION
+   ========================================== */
+.whatsapp-section {
+    margin-top: 28px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--neutral-200);
+}
+
+.divider span {
+    font-size: 0.85rem;
+    color: var(--neutral-400);
+    font-weight: 500;
+}
+
+.btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 24px;
+    background: var(--whatsapp);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    transition: var(--transition-base);
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+    background: var(--whatsapp-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp i {
+    font-size: 1.25rem;
+}
+
+.whatsapp-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--neutral-500);
+    margin-top: 12px;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   TOAST NOTIFICATION
+   ========================================== */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--neutral-800);
+    color: white;
+    padding: 14px 28px;
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    opacity: 0;
+    transition: var(--transition-base);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* ==========================================
+   UPLOAD AREA
+   ========================================== */
+.upload-area {
+    border: 2px dashed var(--neutral-300);
+    border-radius: var(--radius-md);
+    padding: 32px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-base);
+    background: var(--bg-primary);
+}
+
+.upload-area:hover {
+    border-color: var(--primary-400);
+    background: var(--primary-50);
+}
+
+.upload-area.dragover {
+    border-color: var(--primary-500);
+    background: var(--primary-50);
+    border-style: solid;
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.upload-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-100) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.upload-icon i {
+    font-size: 1.5rem;
+    color: var(--primary-500);
+}
+
+.upload-text {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--neutral-700);
+}
+
+.upload-hint {
+    font-size: 0.8rem;
+    color: var(--neutral-400);
+}
+
+.upload-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+}
+
+.upload-preview img {
+    max-width: 200px;
+    max-height: 150px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--neutral-200);
+}
+
+.remove-file {
+    position: absolute;
+    top: -8px;
+    right: calc(50% - 108px);
+    width: 28px;
+    height: 28px;
+    background: #e74c3c;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.remove-file:hover {
+    background: #c0392b;
+    transform: scale(1.1);
+}
+
+.file-name {
+    font-size: 0.85rem;
+    color: var(--neutral-600);
+    font-weight: 500;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+@media (max-width: 992px) {
+    .donasi-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .bank-column,
+    .form-column {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .donasi-section {
+        padding: 40px 0 60px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .bank-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .bank-info {
+        align-items: center;
+    }
+
+    .account-number {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .quick-amounts {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .column-title {
+        font-size: 1.15rem;
+    }
+
+    .bank-column,
+    .form-column {
+        padding: 20px;
+    }
+
+    .quick-btn {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}

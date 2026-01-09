@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami - Yayasan Y-ibbi</title>
+    <link rel="stylesheet" href="kontak.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <section class="kontak-section">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-envelope"></i>
+                    <span>Hubungi Kami</span>
+                </div>
+                <h1>Kontak</h1>
+                <p>Ada pertanyaan atau ingin berkolaborasi? Silakan hubungi kami melalui form di bawah ini.</p>
+            </div>
+
+            <!-- Contact Content -->
+            <div class="kontak-wrapper">
+                <!-- Contact Form -->
+                <div class="form-card">
+                    <form id="kontakForm" class="kontak-form">
+                        <!-- Nama -->
+                        <div class="form-group">
+                            <label for="nama">
+                                <i class="fas fa-user"></i>
+                                Nama Lengkap
+                            </label>
+                            <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap Anda" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">
+                                <i class="fas fa-envelope"></i>
+                                Email
+                            </label>
+                            <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+                        </div>
+
+                        <!-- No WhatsApp dengan Country Code -->
+                        <div class="form-group">
+                            <label for="nowa">
+                                <i class="fab fa-whatsapp"></i>
+                                Nomor WhatsApp
+                            </label>
+                            <div class="phone-input">
+                                <div class="country-select">
+                                    <select id="countryCode" name="countryCode">
+                                        <option value="+62" data-country="🇮🇩" selected>🇮🇩 +62</option>
+                                        <option value="+1" data-country="🇺🇸">🇺🇸 +1</option>
+                                        <option value="+44" data-country="🇬🇧">🇬🇧 +44</option>
+                                        <option value="+60" data-country="🇲🇾">🇲🇾 +60</option>
+                                        <option value="+65" data-country="🇸🇬">🇸🇬 +65</option>
+                                        <option value="+81" data-country="🇯🇵">🇯🇵 +81</option>
+                                        <option value="+82" data-country="🇰🇷">🇰🇷 +82</option>
+                                        <option value="+86" data-country="🇨🇳">🇨🇳 +86</option>
+                                        <option value="+91" data-country="🇮🇳">🇮🇳 +91</option>
+                                        <option value="+966" data-country="🇸🇦">🇸🇦 +966</option>
+                                        <option value="+971" data-country="🇦🇪">🇦🇪 +971</option>
+                                        <option value="+61" data-country="🇦🇺">🇦🇺 +61</option>
+                                    </select>
+                                </div>
+                                <input type="tel" id="nowa" name="nowa" placeholder="8123456789" required>
+                            </div>
+                            <span class="input-hint">Masukkan nomor tanpa angka 0 di depan</span>
+                        </div>
+
+                        <!-- Pesan -->
+                        <div class="form-group">
+                            <label for="pesan">
+                                <i class="fas fa-message"></i>
+                                Pesan
+                            </label>
+                            <textarea id="pesan" name="pesan" rows="4" placeholder="Tuliskan pesan Anda..."
+                                required></textarea>
+                        </div>
+
+                        <!-- Submit Buttons -->
+                        <div class="form-buttons">
+                            <button type="submit" class="btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>Hubungi via WhatsApp</span>
+                            </button>
+                            <button type="button" class="btn-email" onclick="sendEmail()">
+                                <i class="fas fa-envelope"></i>
+                                <span>Kirim Email</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="info-card">
+                    <h3>Informasi Kontak</h3>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">Alamat</span>
+                            <p>Jl. Contoh No. 123, Kota, Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">WhatsApp</span>
+                            <p>+62 812 3456 7890</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">Email</span>
+                            <p>info@yibbi.org</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <span class="info-label">Jam Operasional</span>
+                            <p>Senin - Jumat: 08:00 - 17:00 WIB</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="social-section">
+                        <span class="social-label">Ikuti Kami</span>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Form submission to WhatsApp
+        document.getElementById('kontakForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const nama = document.getElementById('nama').value;
+            const email = document.getElementById('email').value;
+            const countryCode = document.getElementById('countryCode').value;
+            const nowa = document.getElementById('nowa').value;
+            const pesan = document.getElementById('pesan').value;
+
+            // Format message
+            let message = `*Pesan dari Website*%0A%0A`;
+            message += `*Nama:* ${nama}%0A`;
+            message += `*Email:* ${email}%0A`;
+            message += `*No. WA:* ${countryCode}${nowa}%0A`;
+            message += `*Pesan:*%0A${pesan}`;
+
+            // Open WhatsApp
+            window.open(`https://wa.me/6281234567890?text=${message}`, '_blank');
+        });
+
+        // Send Email function
+        function sendEmail() {
+            const nama = document.getElementById('nama').value;
+            const email = document.getElementById('email').value;
+            const pesan = document.getElementById('pesan').value;
+
+            if (!nama || !email || !pesan) {
+                alert('Mohon lengkapi semua field terlebih dahulu');
+                return;
+            }
+
+            const subject = `Pesan dari ${nama} - Website Y-ibbi`;
+            const body = `Nama: ${nama}%0AEmail: ${email}%0A%0APesan:%0A${pesan}`;
+
+            window.location.href = `mailto:info@yibbi.org?subject=${subject}&body=${body}`;
+        }
+
+        // Phone number validation - only numbers
+        document.getElementById('nowa').addEventListener('input', function (e) {
+            this.value = this.value.replace(/\D/g, '');
+        });
+    </script>
+</body>
+
+</html>
