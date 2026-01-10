@@ -1,0 +1,194 @@
+================================================================
+DAFTAR DATABASE TABLES - YAYASAN CMS
+Last Updated: 10 Januari 2026
+================================================================
+
+DATABASE: yayasan_cms
+
+================================================================
+A. TABEL UTAMA (dari yayasan_cms (1).sql)
+================================================================
+
+1.  about_section
+    - Konten halaman tentang kami
+    - Fields: id, subtitle, title, sub_heading, description, image, button_text, button_link, is_active
+
+2.  appearance_settings
+    - Pengaturan tampilan website
+    - Fields: id, primary_color, secondary_color, accent_color, font_family, button_style
+
+3.  campaign_main
+    - Kampanye utama/featured
+    - Fields: id, subtitle, title, background_image, amount_raised, goal_amount, button_text, button_link
+
+4.  campaign_programs
+    - Program-program donasi
+    - Fields: id, image, category, title, description, amount_raised, goal_amount, beneficiaries_count, donators_count, gallery_images, link_url
+
+5.  campaign_sidebar
+    - Sidebar kampanye
+    - Fields: id, title, headline, background_image, description, button_text, button_link
+
+6.  cms_settings
+    - Pengaturan CMS umum
+    - Fields: id, section, title, subtitle, description
+
+7.  events
+    - Data acara/kegiatan
+    - Fields: id, title, description, event_date, event_time, location, image, is_featured, countdown_enabled, countdown_date
+
+8.  events_header
+    - Header halaman acara
+    - Fields: id, subtitle, title
+
+9.  faith_header
+    - Header pilar iman
+    - Fields: id, subtitle, title
+
+10. faith_pillars
+    - Pilar-pilar iman (Sholat, Puasa, Zakat, Haji, dll)
+    - Fields: id, pillar_name, subtitle, main_image, tab_icon, description
+
+11. feature_section
+    - Fitur-fitur website
+    - Fields: id, title, description, icon, link_text, link_url
+
+12. hero_section
+    - Slider/hero banner
+    - Fields: id, title, subtitle, description, image, button_text, button_link
+
+13. permissions
+    - Daftar permission/izin
+    - Fields: id, module, action, display_name
+
+14. quotes
+    - Kutipan/hadits
+    - Fields: id, quote_text, author, source
+
+15. quote_settings
+    - Pengaturan background quotes
+    - Fields: id, background_image
+
+16. roles
+    - Role user (super_admin, admin, editor)
+    - Fields: id, name, display_name, description, is_system
+
+17. role_permissions
+    - Relasi role dan permission
+    - Fields: role_id, permission_id
+
+18. service_header
+    - Header layanan
+    - Fields: id, subtitle, title
+
+19. service_section
+    - Data layanan
+    - Fields: id, category, title, description, main_image, icon, link_url
+
+20. site_settings
+    - Pengaturan website (nama, kontak, sosmed, logo)
+    - Fields: id, site_name, site_tagline, phone_primary, email_primary, address, facebook_url, instagram_url, whatsapp_number, logo_light, logo_dark
+
+21. users
+    - Data pengguna admin
+    - Fields: id, username, email, password, role_id, full_name, phone, photo, last_login
+
+22. KategoriLegalitasAbout
+    - Kategori legalitas yayasan
+    - Fields: id, jenis_akta, nomor_akta, deskripsi, status
+
+
+================================================================
+B. TABEL TAMBAHAN (Perlu diimport terpisah)
+================================================================
+
+FILE: anggota.sql
+-----------------
+23. member_categories
+    - Kategori anggota (Pimpinan, Pengurus Inti, dll)
+    - Fields: id, name, slug, description, display_order, is_active
+
+24. members
+    - Data anggota/pengurus
+    - Fields: id, category_id, name, position, photo, bio, email, whatsapp, linkedin_url, is_featured, is_active
+
+25. member_stats
+    - Statistik anggota
+    - Fields: id, number, label, icon, display_order, is_active
+
+26. member_page_settings
+    - Pengaturan halaman anggota
+    - Fields: id, setting_key, setting_value
+
+
+FILE: galeri.sql
+----------------
+27. gallery_categories
+    - Kategori galeri (Pendidikan, Sosial, Keagamaan, Kesehatan)
+    - Fields: id, name, slug, icon, display_order, is_active
+
+28. gallery_items
+    - Item foto galeri
+    - Fields: id, category_id, title, description, image, event_date, location, display_order
+
+29. gallery_settings
+    - Pengaturan halaman galeri
+    - Fields: id, setting_key, setting_value
+
+
+FILE: konfirmasi.sql
+--------------------
+30. donations
+    - Data donasi/transaksi utama
+    - Fields: id, transaction_id, program_id, program_name, donor_name, donor_email, donor_phone, amount, message, payment_method, payment_proof, status, admin_notes, verified_at, verified_by
+
+31. donation_settings
+    - Pengaturan halaman donasi
+    - Fields: id, setting_key, setting_value
+
+32. bank_accounts
+    - Rekening bank untuk donasi
+    - Fields: id, bank_name, account_name, account_number, bank_logo, bank_class, display_order, is_active
+
+33. ewallets
+    - E-Wallet untuk donasi
+    - Fields: id, wallet_name, wallet_number, wallet_icon, display_order, is_active
+
+
+FILE: donasi.sql (OLD - Deprecated, use konfirmasi.sql instead)
+----------------
+* donations - Data donasi/transaksi (sudah termasuk di konfirmasi.sql)
+
+
+================================================================
+C. RINGKASAN
+================================================================
+
+Total Tabel Database Utama: 22 tabel
+Total Tabel Tambahan: 8 tabel
+--------------------------------
+GRAND TOTAL: 30 tabel
+
+File SQL yang perlu diimport:
+1. yayasan_cms (1).sql  - Database utama (wajib)
+2. anggota.sql          - Tabel anggota (opsional)
+3. galeri.sql           - Tabel galeri (opsional)
+4. donasi.sql           - Tabel donasi (opsional)
+
+
+================================================================
+D. CARA IMPORT
+================================================================
+
+Via phpMyAdmin:
+1. Buka phpMyAdmin (http://localhost/phpmyadmin)
+2. Pilih database "yayasan_cms"
+3. Klik tab "Import"
+4. Pilih file SQL yang ingin diimport
+5. Klik "Go"
+
+Via Command Line:
+mysql -u root -p yayasan_cms < namafile.sql
+
+
+================================================================

@@ -78,6 +78,86 @@ $ewallets = [
     ['name' => 'OVO', 'number' => '081234567890'],
     ['name' => 'DANA', 'number' => '081234567890']
 ];
+
+// ==========================================
+// HANDLE FORM SUBMISSION
+// ==========================================
+$formError = '';
+$formSuccess = false;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $pdo) {
+    // Get form data
+    $nama = trim($_POST['nama'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $nohp = trim($_POST['nohp'] ?? '');
+    $nominal = preg_replace('/[^0-9]/', '', $_POST['nominal'] ?? '0');
+    $pesan = trim($_POST['pesan'] ?? '');
+    $program_id = intval($_POST['program_id'] ?? 0);
+    $program_name = trim($_POST['program_name'] ?? 'Donasi Umum');
+    
+    // Validate required fields
+    if (empty($nama) || empty($email) || empty($nohp) || empty($nominal)) {
+        $formError = 'Semua field wajib harus diisi.';
+    } elseif ($nominal < 10000) {
+        $formError = 'Nominal donasi minimal Rp 10.000';
+    } else {
+        // Generate transaction ID
+        $transactionId = 'DON-' . date('Ymd') . rand(10000, 99999);
+        
+        // Handle file upload
+        $paymentProof = null;
+        if (isset($_FILES['bukti']) && $_FILES['bukti']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = 'uploads/donations/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+            
+            $fileExt = strtolower(pathinfo($_FILES['bukti']['name'], PATHINFO_EXTENSION));
+            $allowedExt = ['jpg', 'jpeg', 'png', 'gif'];
+            
+            if (in_array($fileExt, $allowedExt)) {
+                $fileName = $transactionId . '_' . time() . '.' . $fileExt;
+                $filePath = $uploadDir . $fileName;
+                
+                if (move_uploaded_file($_FILES['bukti']['tmp_name'], $filePath)) {
+                    $paymentProof = $filePath;
+                }
+            }
+        }
+        
+        try {
+            // Insert donation to database
+            $stmt = $pdo->prepare("
+                INSERT INTO donations (
+                    transaction_id, program_id, program_name, donor_name, donor_email, 
+                    donor_phone, amount, message, payment_proof, status, created_at
+                ) VALUES (
+                    ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', NOW()
+                )
+            ");
+            
+            $stmt->execute([
+                $transactionId,
+                $program_id > 0 ? $program_id : null,
+                $program_name,
+                $nama,
+                $email,
+                $nohp,
+                $nominal,
+                $pesan,
+                $paymentProof
+            ]);
+            
+            // Redirect to confirmation page
+            header("Location: index.php?page=konfirmasi&id=" . urlencode($transactionId));
+            exit;
+            
+        } catch (PDOException $e) {
+            error_log("Donation insert error: " . $e->getMessage());
+            $formError = 'Terjadi kesalahan saat menyimpan donasi. Silakan coba lagi.';
+        }
+    }
+}
 ?>
 
 <!-- Page Specific CSS -->
@@ -150,25 +230,32 @@ $ewallets = [
                 </h2>
                 <p class="column-desc">Isi form berikut untuk konfirmasi donasi Anda:</p>
 
-                <form class="donasi-form" id="donasiForm">
+                <?php if (!empty($formError)): ?>
+                <div class="alert alert-error" style="background: #fee2e2; color: #dc2626; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px;">
+                    <i class="fas fa-exclamation-circle"></i> <?= htmlspecialchars($formError) ?>
+                </div>
+                <?php endif; ?>
+
+                <form class="donasi-form" id="donasiForm" method="POST" enctype="multipart/form-data">
                     <!-- Dropdown Program (Added Feature) -->
                     <div class="form-group">
                         <label for="program_id">
                             <i class="fas fa-hand-holding-heart"></i>
                             Pilih Program Donasi
                         </label>
-                        <select id="program_id" name="program_id" class="form-control" style="padding: 14px 16px; border: 1.5px solid var(--neutral-200); border-radius: var(--radius-md); width: 100%;">
-                            <option value="">-- Donasi Umum --</option>
+                        <select id="program_select" name="program_id" class="form-control" style="padding: 14px 16px; border: 1.5px solid var(--neutral-200); border-radius: var(--radius-md); width: 100%;" onchange="updateProgramName()">
+                            <option value="0" data-name="Donasi Umum">-- Donasi Umum --</option>
                             <?php 
                             $selected_id = $_GET['program_id'] ?? '';
                             foreach ($programs as $prog): 
                                 $is_selected = ($prog['id'] == $selected_id) ? 'selected' : '';
                             ?>
-                            <option value="<?= htmlspecialchars($prog['title']) ?>" <?= $is_selected ?>>
+                            <option value="<?= $prog['id'] ?>" data-name="<?= htmlspecialchars($prog['title']) ?>" <?= $is_selected ?>>
                                 <?= htmlspecialchars($prog['title']) ?>
                             </option>
                             <?php endforeach; ?>
                         </select>
+                        <input type="hidden" id="program_name" name="program_name" value="Donasi Umum">
                     </div>
 
                     <div class="form-group">
@@ -302,32 +389,19 @@ $ewallets = [
         e.target.value = value;
     });
 
-    // Form submission
-    document.getElementById('donasiForm').addEventListener('submit', function (e) {
-        e.preventDefault();
+    // Update program name hidden field
+    function updateProgramName() {
+        const select = document.getElementById('program_select');
+        const selectedOption = select.options[select.selectedIndex];
+        document.getElementById('program_name').value = selectedOption.dataset.name || 'Donasi Umum';
+    }
+    
+    // Initialize program name on page load
+    updateProgramName();
 
-        const nama = document.getElementById('nama').value;
-        const email = document.getElementById('email').value;
-        const nohp = document.getElementById('nohp').value;
-        const nominal = document.getElementById('nominal').value;
-        const pesan = document.getElementById('pesan').value;
-        const program = document.getElementById('program_id').value;
-
-        // Create WhatsApp message
-        let message = `*Konfirmasi Donasi*%0A%0A`;
-        if (program) message += `*Program:* ${program}%0A`;
-        message += `*Nama:* ${nama}%0A`;
-        message += `*Email:* ${email}%0A`;
-        message += `*No. HP:* ${nohp}%0A`;
-        message += `*Nominal:* Rp ${nominal}%0A`;
-        if (pesan) {
-            message += `*Pesan:* ${pesan}%0A`;
-        }
-        message += `*Mohon dicek bukti transfer saya.*`;
-
-        // Open WhatsApp
-        window.open(`https://wa.me/${ADMIN_WA}?text=${message}`, '_blank');
-    });
+    // Form submission - now submits to server (POST)
+    // The form will submit naturally to the server
+    // WhatsApp notification will be triggered after successful database save
 
     // Toast notification
     function showToast(message) {
